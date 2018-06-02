@@ -7,9 +7,8 @@ class Database {
 
   query(sql, args, callback) {
     this.connection.query(sql, args, (err, rows) => {
-      if (err) {
-        return callback(err, null);
-      }
+      if (err) return callback(err, null);
+      //console.log('rows', rows);
       callback(null, rows);
     });
   }

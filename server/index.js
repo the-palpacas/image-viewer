@@ -67,6 +67,19 @@ app.get('/bucket', (req, res) => {
  });
 });
 
+app.get('/getAllImages', (req, res) => {
+  getAllImagesFromDB((err, rows) => {
+    if (err) {
+      res.status(400);
+      res.send('error getting images: ', err);
+    }
+    res.status(200);
+    res.send(rows);
+  });
+});
+
+// TODO: getImagesByProductId
+
 let parseBucketResponseInsertIntoMySQLInsert = (imgArray) => {
   const urlPrefix = 'https://s3.amazonaws.com/etsy-page-images/';
   imgArray.map(img => {
@@ -107,6 +120,17 @@ let insertBucketImages = () => {
         });
     });
   }
+};
+
+let getAllImagesFromDB = (callback) => {
+  // TODO: find arg/s that will only return img
+  /*
+RowDataPacket {
+    id: 10,
+    product_id: 1,
+    img_src: 'https://s3.amazonaws.com/etsy-page-images/1/2-bread-zoom.jpg' },
+  */
+  db.query(`SELECT * FROM images;`, null, callback);
 };
 
 app.listen(PORT, () => {
