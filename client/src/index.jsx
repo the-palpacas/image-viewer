@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom'
 import axios from 'axios';
-// import dummyImg from '../../public/img/dummy-images.js';
 
 class App extends React.Component {
   constructor(props) {
@@ -19,13 +18,7 @@ class App extends React.Component {
 
   // runs after the component output has been rendered to the DOM
   componentDidMount(){
-  	// fetchImages().then(response => {
-   //    this.setState({
-   //      images: response.images
-   //    });
-   //  });
-  	//this.fetchImages();
-    this.fetchSingleImage();
+  	this.fetchImages();
   }
 
   fetchSingleImage() {
@@ -37,9 +30,6 @@ class App extends React.Component {
         'Content-Type': 'image/jpeg',
       },
     }).then((result) => {
-      // const outputFilename = '/images/img1.jpg';
-      // fs.writeFileSync(outputFilename, result.data);
-      // return outputFilename;
       console.log('result.data', result.data);
       this.setState({
         image: result.data
@@ -51,47 +41,14 @@ class App extends React.Component {
     });
   }
 
-/*
-  fetchSingleImage() {
-    axios.get('/images')
-    .then(response => {
-        var foo = response.data.forms[0].name;
-        console.log('foo', foo);
-
-        console.log('res.data', response.data);
-        //pokemonImage.src = response.data.sprites.front_default;
-        this.setState({
-          imagesLoaded: true,
-          image: response.data.sprites.front_default
-        });
-    },
-    (error) => {
-      console.log('client index componentDidMount got error 1:', error);
-      this.setState({
-        imagesLoaded: false,
-        error: error
-      });
-    })
-    .then(() => {
-      console.log('client index componentDidMount state:', this.state);
-    })
-    .catch((error) => {
-      console.log(error);
-      console.log('client index componentDidMount got error 2:', error);
-    });
-  }
-*/
   fetchImages() {
   	axios.get('/images')
-    // .then(res => {
-    // 	return res.json();
-    // })
     .then(res => {
-    	console.log('client index, axios get, records', res);
+    	console.log('client index, axios get, records res.data', res.data);
 
       this.setState({
       	imagesLoaded: true,
-      	images: res
+      	images: res.data
       });
     },
     (error) => {
@@ -112,10 +69,20 @@ class App extends React.Component {
 
   }
 
-  // see full-stack-review /client/src/index.jsx
+  // {id: 1, desciption: "image 1", src: "https://s3.amazonaws.com/etsy-page-images/img-2.jpg"}
   render() {
-  	const { error, imagesLoaded, images } = this.state;
-  	return(<div><img src="/images" alt="MDN"></img>></div>)
+    const { error, imagesLoaded, images } = this.state;
+    if(imagesLoaded) {
+      return (
+        this.state.images.map(img => {
+          return <div key={img.id}><img src={img.src} alt={img.desciption}></img></div>
+        })
+      )
+    } else {
+      return (
+        <div><h2>something went wrong ...</h2></div>
+      )
+    }
   }
 }
 

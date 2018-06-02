@@ -59,3 +59,7 @@ axios.get('/user', {
 Checking peerDependencies of eslint-config-airbnb@latest
 
 there will be a .eslintrc file
+
+... none of this works, but this does:
+
+./node_modules/.bin/eslint .
