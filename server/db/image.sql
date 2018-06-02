@@ -32,7 +32,6 @@ resulting 'images' table in 'images_viewer' db:
 /*
 insert sttement:
 INSERT INTO images (product_id, img_src) VALUES (0, 'https://s3.amazonaws.com/etsy-page-images/0/0-beach-zoom.jpg');
-INSERT INTO images (product_id, img_src) VALUES (0, 'https://s3.amazonaws.com/etsy-page-images/0/0-beach-zoom.jpg');
 Query OK, 1 row affected (0.00 sec)
 
 result:

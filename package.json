@@ -29,6 +29,7 @@
     "webpack-cli": "^2.1.4"
   },
   "dependencies": {
+    "eslint": "^4.19.1",
     "axios": "^0.18.0",
     "babel-cli": "^6.26.0",
     "body-parser": "^1.18.3",

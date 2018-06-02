@@ -5,23 +5,18 @@ class Database {
     this.connection = mysql.createConnection(config);
   }
 
-  query(sql, args) {
-    return new Promise((resolve, reject) => {
-      this.connection.query(sql, args, (err, rows) => {
-        if (err) {
-          return reject(err);
-        }
-        resolve(rows);
-      });
+  query(sql, args, callback) {
+    this.connection.query(sql, args, (err, rows) => {
+      if (err) {
+        return callback(err, null);
+      }
+      callback(null, rows);
     });
   }
 
-  close() {
-    return new Promise((resolve, reject) => {
-      this.connection.end((err) => {
-        if (err) { return reject(err); }
-        resolve();
-      });
+  close(callback) {
+    this.connection.end((err) => {
+      if (err) return callback(err);
     });
   }
 }
@@ -30,7 +25,7 @@ const dbConnection = new Database({
   host: 'localhost',
   user: 'root',
   password: 'P@$$W0rd',
-  database: 'image-viewer',
+  database: 'image_viewer',
 });
 
 module.exports = dbConnection;
