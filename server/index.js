@@ -30,16 +30,14 @@ app.use(express.static(publicDir));
 // image object created from S3 bucket response
 const urlObj = {};
 
-app.get('/images', (req, res) => {
-	// will need to hook into db
-	// headers.set("Content-Type", "image/jpg");
-	console.log('dummyImageData', JSON.stringify(dummyImageData));
+// app.get('/images', (req, res) => {
+// 	// will need to hook into db
+// 	// headers.set("Content-Type", "image/jpg");
+// 	console.log('dummyImageData', JSON.stringify(dummyImageData))
 
-  // TODO: pull from mysql
-
-	res.status(200);
-	res.send(dummyImageData);
-});
+// 	res.status(200);
+// 	res.send(dummyImageData);
+// });
 
 app.get('/bucket', (req, res) => {
 	// s3 setup: http://www.joshsgman.com/upload-to-and-get-images-from-amazon-s3-with-node-js/

@@ -12,37 +12,37 @@ class App extends React.Component {
       image: null
     }
 
-    this.fetchImages = this.fetchImages.bind(this);
-    this.fetchSingleImage = this.fetchSingleImage.bind(this);
+    this.fetchAllImages = this.fetchAllImages.bind(this);
+    // this.fetchSingleImage = this.fetchSingleImage.bind(this);
   }
 
   // runs after the component output has been rendered to the DOM
   componentDidMount(){
-  	this.fetchImages();
+  	this.fetchAllImages();
   }
 
-  fetchSingleImage() {
-    axios.request({
-      responseType: 'arraybuffer',
-      url: '/images',
-      method: 'get',
-      headers: {
-        'Content-Type': 'image/jpeg',
-      },
-    }).then((result) => {
-      console.log('result.data', result.data);
-      this.setState({
-        image: result.data
-      });
-    })
-    .catch((error) => {
-      console.log(error);
-      console.log('client index componentDidMount got error 2:', error);
-    });
-  }
+  // fetchSingleImage() {
+  //   axios.request({
+  //     responseType: 'arraybuffer',
+  //     url: '/getAllImages',
+  //     method: 'get',
+  //     headers: {
+  //       'Content-Type': 'image/jpeg',
+  //     },
+  //   }).then((result) => {
+  //     console.log('result.data', result.data);
+  //     this.setState({
+  //       image: result.data
+  //     });
+  //   })
+  //   .catch((error) => {
+  //     console.log(error);
+  //     console.log('client index componentDidMount got error 2:', error);
+  //   });
+  // }
 
-  fetchImages() {
-  	axios.get('/images')
+  fetchAllImages() {
+  	axios.get('/getAllImages')
     .then(res => {
     	console.log('client index, axios get, records res.data', res.data);
 
@@ -65,25 +65,33 @@ class App extends React.Component {
     });
   }
 
-  componentWillUnmount() {
-
-  }
-
-  // {id: 1, desciption: "image 1", src: "https://s3.amazonaws.com/etsy-page-images/img-2.jpg"}
   render() {
-    const { error, imagesLoaded, images } = this.state;
-    if(imagesLoaded) {
+    const { imagesLoaded, images, error } = this.state;
+    if (imagesLoaded) {
       return (
-        this.state.images.map(img => {
-          return <div key={img.id}><img src={img.src} alt={img.desciption}></img></div>
-        })
-      )
+        <div>
+        {images.map((image, index) => (
+          <div key={index}>
+            <img src={image.img_src} width="570" />
+          </div>
+        ))}
+        </div>
+      );
+    } else if(error){
+      return (<div>error: {this.state.error}</div>);
     } else {
-      return (
-        <div><h2>something went wrong ...</h2></div>
-      )
+      return (<div>else</div>);
     }
   }
+  // render() {
+  //   if(this.state.imagesLoaded) {
+  //     return (<div>loaded</div>) 
+  //   } else if(this.state.error){
+  //     return (<div>error: {this.state.error}</div>)
+  //   } else {
+  //     return (<div>else</div>)
+  //   }
+  // }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));
