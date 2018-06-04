@@ -1,4 +1,6 @@
 var path = require('path');
+var webpack = require('webpack');
+
 var SRC_DIR = path.join(__dirname, '/client/src'); // index.jsx, /components
 var DIST_DIR = path.join(__dirname, '/public/dist'); // bundle.js, index.html
 
