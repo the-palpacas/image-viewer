@@ -2,3 +2,5 @@ node_modules/
 aws-creds.json
 etsy-images/
 public/img
+s3-credentials.json
+public/.DS_Store

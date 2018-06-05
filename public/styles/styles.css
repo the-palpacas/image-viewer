@@ -1,0 +1,198 @@
+@charset "utf-8";
+@font-face {
+    font-family: "SSStandard";
+    src: url("/assets/type/ss-standard.eot");
+    src: url("/assets/type/ss-standard.eot?#iefix") format('embedded-opentype'), url("/assets/type/ss-standard.woff2") format('woff2'), url("/assets/type/ss-standard.woff") format('woff'), url("/assets/type/ss-standard.ttf") format('truetype'), url("/assets/type/ss-standard.svg#SSStandard") format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+/* --- ImageWrapper --- className="image-wrapper */
+.image-wrapper {
+    position: relative;
+}
+
+#registry-bar .image-wrapper {
+    text-align: center;
+    margin: 0 2px 0 0;
+    background: #fff;
+    float: left;
+}
+
+/* index.20180529223239_LRG.css */
+/* --- ListingImage --- */
+#listing-image #image-main {
+    margin-bottom: 4px;
+    background-color: #f5f5f1;
+    position: relative;
+    text-align: center;
+    box-shadow: inset 0px 0px 40px -25px #000;
+    -moz-box-shadow: inset 0px 0px 40px -25px #000;
+    -webkit-box-shadow: inset 0px 0px 40px -25px #000;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#listing-image #image-main a.image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+#listing-image #image-main img {
+    width: auto;
+    max-width: 570px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+/* --- ImageMain --- */
+#listing-image #image-main {
+    margin-bottom: 4px;
+    background-color: #f5f5f1;
+    position: relative;
+    text-align: center;
+    box-shadow: inset 0px 0px 40px -25px #000;
+    -moz-box-shadow: inset 0px 0px 40px -25px #000;
+    -webkit-box-shadow: inset 0px 0px 40px -25px #000;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+#listing-image #image-main a.image {
+    width: 100%;
+    height: 100%;
+    display: block;
+    position: relative;
+}
+
+/* ----- ImageCarousel ---- */
+#image-carousel li {
+    width: 100%;
+}
+
+#image-carousel:hover {
+    cursor: pointer;
+}
+
+/* --- Arrow --- */
+/* image-left-arrow-container -> JS?*/
+
+/* image-arrow-box-container: */
+.image-arrow-box-container {
+    position: absolute;
+    top: 0%;
+    height: 100%;
+}
+
+.image-arrow-box {
+/*    border: none;*/
+    border: thick double #32a1ce;
+    background: #97928F;
+    /*opacity: 0.4;*/
+    /*filter: alpha(opacity=40);*/
+    opacity: 1;
+    margin-top: auto;
+    height: 80px;
+    line-height: 86px;
+    width: 40px;
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    margin-top: -40px;
+    font-family: "SSStandard";
+    font-style: normal;
+    font-weight: normal;
+    text-decoration: none;
+    text-rendering: optimizeLegibility;
+    white-space: nowrap;
+    -moz-font-feature-settings: "liga=1";
+    -moz-font-feature-settings: "liga";
+    -ms-font-feature-settings: "liga" 1;
+    -o-font-feature-settings: "liga";
+    font-feature-settings: "liga";
+    -webkit-font-smoothing: antialiased;
+    color: #F2F1F1;
+    transition: all 0.1s;
+    -webkit-transition: all 0.1s;
+    -moz-transition: all 0.1s;
+}
+
+.image-arrow-box-container a {
+    width: 280px;
+    display: block;
+}
+
+.image-arrow-box-container:hover .image-arrow-box {
+    background: #8d8884;
+    color: #fff;
+}
+.image-arrow-box-container:active .image-arrow-box {
+    background: #34A8C4;
+    opacity: 0.8;
+    color: #fff;
+}
+.image-arrow-box-container:hover {
+    cursor: pointer;
+}
+
+#image-left-arrow {
+    border-radius: 0 3px 3px 0;
+}
+.image-arrow-box a:link {
+    color: #F2F1F1;
+}
+
+/*arrow*/
+a.arrow::after {
+    border-style: solid;
+    border-color: #888 transparent;
+    border-width: 5px 5px 0;
+    display: inline-block;
+    position: relative;
+    top: -2px;
+    left: 1px;
+    content: '';
+}
+
+/*image-right-arrow-container*/
+#image-right-arrow-container {
+    right: 0%;
+}
+
+/*image-right-arrow*/
+#image-right-arrow {
+    right: 0px;
+}
+
+#image-right-arrow {
+    border-radius: 3px 0 0 3px;
+}
+
+/* -- ? ---*/
+/* had these in front: .ui-toolkit .suggested-username-tip  */
+.arrow {
+    background: no-repeat scroll -47px 1px transparent;
+    background-image: url("data:image/png;
+    base64, iVBORw0KGgoAAAANSUhEUgAAAHIAAABzCAMAAABzX6bqAAAAS1BMVEXZ2dn////Z2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnp6enq6urt7e309PT19fX+/v7///+Uf54gAAAAEnRSTlMAAAYbHk5RVI2Qq7G0t97h+fxNpkuAAAAB0klEQVR4Ab3NN5LCQAAAwdWe9+YO0P9fimpSCoIONPlUD+1u2rcsKt5/fkwnTfz/y2QSxHXNdBLETCdJzHSSxEwgTQTTyUQwnUwE08lEMJ1MBNPJRDCdTATTyMSvRDcvSRcziXQxk0gXM4l0MZNIFzOJdDETSBcz3yeRLmYS6WImkS5mEuliJpEuZhLpYiaRLmYS6WImkS5mCunidTNSRDcjRXQzUkQ3I1F0M9JFMSNdFDPSRTEjXRQz0kUxI10UM9JFMSNdFDPSRTEjXRQz0kUxI10UM9JFMSNdFDPSRTEjTQTzbUa6iGaki2JGuijmRrqopotsDhfRfB0vv6c9xcP3w3ATxWW4ieJGuiniiHQTxEg3RYx0E8TIvcxjYqSZID7GRLopYqSbIka6KWKkmyJGuilipJsiRoLpYqSYLkaK6WKkmC5GiulipJguRorpYqSYLkaK6WKkmC5GiulipJguRt42VXwaRGaqiGSmiUxmigikm4lAupkIpJuJQLqZCKSbiUC6mQikm4lAupkIpJuJQLqZCKSbiUC6mQikm4lAupkIJJqJP4lAopkIpJuJQLqZCKSbiUC6mQikm4lAupkoJJuJRLKZSCSbIDpZz4lCngHEflyX8KZpFQAAAABJRU5ErkJggg==");
+    display: block;
+    height: 9px;
+    width: 20px;
+    left: 7px;
+    position: absolute;
+    top: -9px;
+    z-index: 3;
+}
+
+/* old:iVBORw0KGgoAAAANSUhEUgAAAHIAAABzCAMAAABzX6bqAAAAS1BMVEXZ2dn////Z2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnZ2dnp6enq6urt7e309PT19fX+/v7///+Uf54gAAAAEnRSTlMAAAYbHk5RVI2Qq7G0t97h+fxNpkuAAAAB0klEQVR4Ab3NN5LCQAAAwdWe9+YO0P9fimpSCoIONPlUD+1u2rcsKt5/fkwnTfz/y2QSxHXNdBLETCdJzHSSxEwgTQTTyUQwnUwE08lEMJ1MBNPJRDCdTATTyMSvRDcvSRcziXQxk0gXM4l0MZNIFzOJdDETSBcz3yeRLmYS6WImkS5mEuliJpEuZhLpYiaRLmYS6WImkS5mCunidTNSRDcjRXQzUkQ3I1F0M9JFMSNdFDPSRTEjXRQz0kUxI10UM9JFMSNdFDPSRTEjXRQz0kUxI10UM9JFMSNdFDPSRTEjTQTzbUa6iGaki2JGuijmRrqopotsDhfRfB0vv6c9xcP3w3ATxWW4ieJGuiniiHQTxEg3RYx0E8TIvcxjYqSZID7GRLopYqSbIka6KWKkmyJGuilipJsiRoLpYqSYLkaK6WKkmC5GiulipJguRorpYqSYLkaK6WKkmC5GiulipJguRt42VXwaRGaqiGSmiUxmigikm4lAupkIpJuJQLqZCKSbiUC6mQikm4lAupkIpJuJQLqZCKSbiUC6mQikm4lAupkIJJqJP4lAopkIpJuJQLqZCKSbiUC6mQikm4lAupkoJJuJRLKZSCSbIDpZz4lCngHEflyX8KZpFQAAAABJRU5ErkJggg=="
+// https://gist.github.com/szilagyi/6624176: iVBORw0KGgoAAAANSUhEUgAAAAcAAAAHCAYAAADEUlfTAAAAJUlEQVR42mNgAILy8vL/DLgASBKnApgkVgXIkhgKiNKJ005s4gDLbCZBiSxfygAAAABJRU5ErkJggg==
+*/

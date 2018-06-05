@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import ImageViewer from './components/ImageViewer.jsx';
+import ImageWrapper from './components/ImageWrapper.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -20,6 +20,9 @@ class App extends React.Component {
 
     // this.fetchAllImages = this.fetchAllImages.bind(this);
     this.createImagesByProductId = this.createImagesByProductId.bind(this);
+    this.listenLeftButtonClick = this.listenLeftButtonClick.bind(this);
+    this.listenRigtButtonClicked = this.listenRigtButtonClicked.bind(this);
+    this.shiftProductObj = this.shiftProductObj.bind(this);
   }
 
   // runs after the component output has been rendered to the DOM
@@ -58,47 +61,6 @@ class App extends React.Component {
     });
   }
 
-  // fetchAllImages() {
-  //   axios.get('/getAllImagesFromDb')
-  //   .then(res => {
-  //     console.log('client index, axios get, records res.data', res.data);
-
-  //     this.setState({
-  //       imagesLoaded: true,
-  //       images: res.data
-  //     });
-  //   },
-  //   (error) => {
-  //     this.setState({
-  //       imagesLoaded: false,
-  //       error: error,
-  //     });
-  //   })
-  //   .then(() => {
-  //     console.log('client index componentDidMount state:', this.state);
-  //     this.createImagesByProductId();
-  //     console.log('imagesByProductId', this.state.imagesByProductId);
-  //     console.log('imagesByProductId[0]', this.state.imagesByProductId[0]);
-  //   })
-  //   .catch((error) => {
-  //     console.log('client index componentDidMount got error:', error);
-  //   });
-  // }
-
-  // TODO: this is temp b/c will have page per product so
-  //       won't have to parse whole list into object
-  // createImagesByProductId() {
-  //   // for each
-  //   var prodObject = {};
-  //   this.state.images.map(img => {
-  //     prodObject[productId] = productObj[productId] || [];
-  //     prodObject[productId].push(img.img_src);
-  //   });
-  //   console.log('prodObject', prodObject);
-
-  //   return prodObject;
-  // }
-
   createImagesByProductId(images) {
     let productObj = {};
 
@@ -109,38 +71,79 @@ class App extends React.Component {
       productObj[o.product_id].push({ 'img_src': o.img_src });
     });
 
-    console.log('productObj', productObj);
+    console.log('INDEX productObj', productObj);
 
     return productObj;
   }
 
-  // createImagesByProductId() {
-  //   // for each
-  //   var arr2 = this.state.images.map(img => {
-  //     let productId = img.product_id;
-  //     this.state.imagesByProductId[productId] = this.state.imagesByProductId[productId] || [];
-  //     return this.state.imagesByProductId[productId].push(img.img_src);
-  //   });
-  //   // this.forceUpdate();
-  //   console.log('arr2', arr2);
-  // }
+  shiftProductObj(direction, object) {
+    var keysArr = Object.keys(object);
+    var obj = Object.assign({}, object);
+
+    if(keysArr.length > 1) {
+        console.error('shiftProductObj only works with one image object ... 1 key');
+    }
+
+    const imgArragy = obj[keysArr[0]];
+
+    if(direction === 'l') { // take 1st and put last 
+        var firstObj = imgArragy.shift();
+        imgArragy.push(firstObj);
+    } else { // take  last and put first 
+        var lastObj = imgArragy.pop();
+        imgArragy.unshift(lastObj);
+    }
+
+    var returObj = {};
+    returObj[keysArr[0]] = imgArragy;
+
+    return returObj;
+  }
+
+  listenLeftButtonClick(event) {
+    event.preventDefault();
+
+    console.log('L button clicked');
+
+    this.moveLeft();
+  }
+
+  moveLeft() {
+    const shiftedObj = this.shiftProductObj('l', this.state.imagesByProductId);
+    this.setState({
+      imagesByProductId: shiftedObj,
+    });
+  }
+
+  listenRigtButtonClicked(event) {
+    event.preventDefault();
+
+    console.log('R button clicked');
+
+    this.moveRight();
+  }
+
+  moveRight() {
+    const shiftedObj = this.shiftProductObj('r', this.state.imagesByProductId); 
+    this.setState({
+      imagesByProductId: shiftedObj,
+    });
+  }
 
   render() {
     const { imagesLoaded, imagesByProductId, error } = this.state;
+    console.log('App/render() imagesByProductId[0]', imagesByProductId[0]);
+
     if (error) {
       return (
-        <div>Got error</div>
+        <div>Got err: {error}</div>
       )
     } else if (imagesLoaded && imagesByProductId) {
-      const { firstRow } = this.state.imagesByProductId[0];
+      // const { firstRow } = this.state.imagesByProductId[0];
       return (
-        // {console.log('0', this.state.imagesByProductId[0])}
-        // his.state.imagesByProductId.0 unexpected token '.'
-        //<ImageViewer images={this.state.imagesByProductId[0]} />
-        //{
-          //const [firstRow] = this.state.imagesByProductId[0];
-          <ImageViewer imagesArray={this.state.imagesByProductId[0]} />
-        //}
+        <div>
+          <ImageWrapper leftClick={this.listenLeftButtonClick} rightClick={this.listenRigtButtonClicked} imagesArray={imagesByProductId[0]} />
+        </div>
       );
     } else {
       return (
@@ -148,27 +151,6 @@ class App extends React.Component {
       );
     }
   }
-
-// <ImageViewer images={this.state.imagesByProductId[0]} />
-// renders all images from db
-  // render() {
-  //   const { imagesLoaded, images, error } = this.state;
-  //   if (imagesLoaded) {
-  //     return (
-  //       <div>
-  //       {images.map((image, index) => (
-  //         <div key={index}>
-  //           <img async src={image.img_src} width="570" />
-  //         </div>
-  //       ))}
-  //       </div>
-  //     );
-  //   } else if(error){
-  //     return (<div>error: {this.state.error}</div>);
-  //   } else {
-  //     return (<div>else</div>);
-  //   }
-  // }
 }
 
 ReactDOM.render(<App />, document.getElementById('app'));

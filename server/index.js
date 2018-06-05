@@ -18,12 +18,12 @@ const publicDir = __dirname + '/../public/';
 // console.log('publicDir', publicDir);
 
 //  '/Users/maspen/Documents/learning/hack-reactor-INTENSIVE/Capstone/repos/image-viewer-matt/server/../public/img/sample-images.js'
-const dummyImageData = require(publicDir + 'img/sample-images.js');
+// const dummyImageData = require(publicDir + 'img/sample-images.js');
 
 const PORT = 3000;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.static(publicDir));
 
@@ -38,7 +38,20 @@ const urlObj = {};
 // 	res.status(200);
 // 	res.send(dummyImageData);
 // });
+// app.get('/', (req, res) => {
+//   // will go to 'default page where product item is '0'
+// });
 
+// this is how we extract 'orderId' from the URL
+// app.get('/viewer/:orderId', function(request, response){
+//   response.send('viewer ' + request.params.orderId);
+// });
+// app.get('/:productId', (req, res) => {
+//   // will go to same product page but use 'productId' to display
+//   // images for the product
+// });
+
+// [time-permitting] - page displaying all the buckets in S3
 app.get('/bucket', (req, res) => {
 	// s3 setup: http://www.joshsgman.com/upload-to-and-get-images-from-amazon-s3-with-node-js/
 	// getting bucket: https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/S3.html#listObjects-property
@@ -57,7 +70,7 @@ app.get('/bucket', (req, res) => {
    }
    // console.log(data);
 
-    parseBucketResponseInsertIntoMySQLInsert(data.Contents);
+    parseBucketResponseInsertIntoMySQL(data.Contents);
     insertBucketImages();
 
    res.status(200);
@@ -65,7 +78,8 @@ app.get('/bucket', (req, res) => {
  });
 });
 
-app.get('/getAllImages', (req, res) => {
+// [time permitting] - page displaying all the images
+app.get('/getAllImagesFromDB', (req, res) => {
   getAllImagesFromDB((err, rows) => {
     if (err) {
       res.status(400);
@@ -78,7 +92,7 @@ app.get('/getAllImages', (req, res) => {
 
 // TODO: getImagesByProductId
 
-let parseBucketResponseInsertIntoMySQLInsert = (imgArray) => {
+let parseBucketResponseInsertIntoMySQL = (imgArray) => {
   const urlPrefix = 'https://s3.amazonaws.com/etsy-page-images/';
   imgArray.map(img => {
     return img.Key.split('/');
