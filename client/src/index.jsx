@@ -2,7 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import axios from 'axios';
 
-import ImageWrapper from './components/ImageWrapper.jsx';
+// import Bootstrap from 'bootstrap/dist/css/bootstrap.css';
+
+import Main from './components/Main.jsx';
 
 class App extends React.Component {
   constructor(props) {
@@ -142,7 +144,7 @@ class App extends React.Component {
       // const { firstRow } = this.state.imagesByProductId[0];
       return (
         <div>
-          <ImageWrapper leftClick={this.listenLeftButtonClick} rightClick={this.listenRigtButtonClicked} imagesArray={imagesByProductId[0]} />
+          <Main leftClick={this.listenLeftButtonClick} rightClick={this.listenRigtButtonClicked} imagesArray={imagesByProductId[0]} />
         </div>
       );
     } else {

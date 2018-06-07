@@ -28,7 +28,9 @@ class ImageViewer extends React.Component {
     const { isMounted, imagesArray } = this.state;
     if (isMounted && imagesArray) {
       return (
-        <ImageMain imagesArray={this.state.imagesArray} />
+        <div style={{ col width: '570' }} >
+          <ImageMain imagesArray={this.state.imagesArray} />
+        </div>
       )
     } else {
       return (

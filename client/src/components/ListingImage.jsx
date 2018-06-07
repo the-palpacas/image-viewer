@@ -1,16 +1,23 @@
 import React from 'react';
 
-import ImageMain from './ImageMain.jsx';
+import ImageCarousel from './ImageCarousel.jsx';
+import Arrows from './Arrows.jsx';
 
 const ListingImage = (props) => {
 
-  console.log('ListingImage props', props);
+  console.log('ImageMain props', props);
 
-  return (
-    <div id="listing-image" data-palette-listing-id="545400033" data-shop-id="13777380">
-      <ImageMain imagesArray={props.imagesArray} leftClick={props.leftClick} rightClick={props.rightClick} />
-    </div>
-  )
+    return (
+      <div id="listing-image" >
+        <div className="image-main">
+          <ImageCarousel imagesArray={props.imagesArray} leftClick={props.leftClick} rightClick={props.rightClick} />
+          <Arrows magesArray={props.imagesArray} leftClick={props.leftClick} rightClick={props.rightClick} />
+        </div>
+        <div className="image-footer">
+          {/* Footer / Circles */}
+        </div>
+      </div>
+    )
 }
 
 export default ListingImage;
