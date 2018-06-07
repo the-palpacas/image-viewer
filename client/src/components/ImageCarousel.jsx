@@ -1,25 +1,13 @@
 import React from 'react';
 
-class ImageCarousel extends React.Component {
-  constructor(props) {
-    super(props);
+const ImageCarousel = (props) => {
 
-    console.log('ImageCarousel props', this.props);
+  console.log('----- ImageCarousel props', props);
 
-    this.state = {
-      imagesArray: this.props.imagesArray,
-    };
-
-    // const containerFull = {{margin: '0' 'auto'}};
-  }
-
-/* inside image is scaled to 570! <img src="https://img.etsystatic.com/il/6ffc70/1267268056/il_570xN.1267268056_dg8h.jpg?version=0" width="570" alt=""> */
-
-  render() {
-    return(
-      <ul id="image-carousel" className="p-0 .m-0" style={{ height: '570px', width: '570px' }}>
-        {this.state.imagesArray.map((img, index) => {
-          if (index === 0) {
+  return (
+    <ul id="image-carousel" className="p-0" style={{ width: '570px' }}>
+        {props.imagesArray.map((img, index) => {
+          if (index === props.currentImageIndex) {
             return (
               <React.Fragment key={index}>
                 <li id={`image-${index}`} data-image-index={index} data-full-image-href={img.img_src} data-large-image-href={img.img_src} data-palette-listing-image="">
@@ -37,9 +25,8 @@ class ImageCarousel extends React.Component {
           )
         })}
       </ul>
-    )
-  }
-}
+  );
+};
 /*
 1st li:
 <li id="image-0" data-image-index="0" data-full-image-href="https://img.etsystatic.com/il/6ffc70/1267268056/il_fullxfull.1267268056_dg8h.jpg?version=0" data-large-image-href="https://img.etsystatic.com/il/6ffc70/1267268056/il_570xN.1267268056_dg8h.jpg?version=0" data-palette-listing-image="">

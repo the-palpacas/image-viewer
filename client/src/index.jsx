@@ -139,7 +139,7 @@ class App extends React.Component {
     if (error) {
       return (
         <div>Got err: {error}</div>
-      )
+      );
     } else if (imagesLoaded && imagesByProductId) {
       // const { firstRow } = this.state.imagesByProductId[0];
       return (

@@ -6,7 +6,7 @@ const ImageWrapper = (props) => {
 
   console.log('ListingImage props', props);
 
-  const borderBlue = {border: 'solid', color: 'blue'};
+  const borderBlue = { border: 'solid', color: 'blue' };
 
   return (
     <div className="image-wrapper" style={borderBlue}>

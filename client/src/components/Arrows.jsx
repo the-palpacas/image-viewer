@@ -2,7 +2,7 @@ import React from 'react';
 
 const Arrows = (props) => {
 
-  console.log('Arrows props', props);
+  console.log(' -> Arrows props', props);
 
     return (
       <div>
