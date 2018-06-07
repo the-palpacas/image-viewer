@@ -10,7 +10,7 @@ const ImageWrapper = (props) => {
 
   return (
     <div className="image-wrapper" style={borderBlue}>
-      <ListingImage imagesArray={props.imagesArray} leftClick={props.leftClick} rightClick={props.rightClick} />
+      <ListingImage imagesArray={props.imagesArray} />
     </div>
   )
 }

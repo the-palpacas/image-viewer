@@ -21,7 +21,7 @@ const Main = (props) => {
   return (
     <div className="container-fluid" style={borderGreen}>
       <div className="row .col7 .fix500" style={borderDashedBlack}>
-        <ImageWrapper imagesArray={props.imagesArray} leftClick={props.leftClick} rightClick={props.rightClick} />
+        <ImageWrapper imagesArray={props.imagesArray} />
       </div>
     </div>
   )

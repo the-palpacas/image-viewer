@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Zoom from './Zoom.jsx';
+
 const ImageFooter = (props) => {
 
   console.log(' -[]- ImageFooter props', props);
@@ -17,8 +19,8 @@ const ImageFooter = (props) => {
           )
         })}
         </ul>
+        <Zoom imgArray={props.imagesArray} targetImg={props.targetImg} />
       </div>
-      /* <a zoom */
     );
 };
 

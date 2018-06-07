@@ -109,7 +109,7 @@ class ListingImage extends React.Component {
         <div className="image-main">
           <ImageCarousel currentImageIndex={this.state.currentImageIndex} imagesArray={this.state.imagesArray} />
           <Arrows leftClick={this.leftArrowClicked} rightClick={this.rightArrowClicked} />
-          <ImageFooter imagesArray={this.state.imagesArray} footerClick={this.footerClick} />
+          <ImageFooter imagesArray={this.state.imagesArray} footerClick={this.footerClick} targetImg={this.state.currentImageIndex} />
         </div>
       </div>
     );
