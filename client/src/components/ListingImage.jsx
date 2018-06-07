@@ -27,6 +27,7 @@ class ListingImage extends React.Component {
     this.carouselMoveRight = this.carouselMoveRight.bind(this);
     this.leftArrowClicked = this.leftArrowClicked.bind(this);
     this.rightArrowClicked = this.rightArrowClicked.bind(this);
+    this.footerClick = this.footerClick.bind(this);
   }
 
   // shouldComponentUpdate() {
@@ -89,13 +90,26 @@ class ListingImage extends React.Component {
     this.carouselMoveRight();
   }
 
+  /* Footer methods */
+  footerClick(event) {
+    event.preventDefault();
+
+    console.log('footer clicked, imageId', event.target.id);
+
+    const displayImageIndex = Number(event.target.id);
+
+    this.setState({
+        currentImageIndex: displayImageIndex,
+      });
+  }
+
   render() {
     return (
       <div id="listing-image" >
         <div className="image-main">
           <ImageCarousel currentImageIndex={this.state.currentImageIndex} imagesArray={this.state.imagesArray} />
           <Arrows leftClick={this.leftArrowClicked} rightClick={this.rightArrowClicked} />
-          <ImageFooter imagesArray={this.state.imagesArray} />
+          <ImageFooter imagesArray={this.state.imagesArray} footerClick={this.footerClick} />
         </div>
       </div>
     );

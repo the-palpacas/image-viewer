@@ -1,27 +1,17 @@
 import React from 'react';
 
-class ImageFooter extends React.Component {
-  constructor(props) {
-    super(props);
+const ImageFooter = (props) => {
 
-    console.log('ImageFooter props', this.props);
+  console.log(' -[]- ImageFooter props', props);
 
-    this.state = {
-      imagesArray: this.props.imagesArray,
-    };
-
-    // const containerFull = {{margin: '0' 'auto'}};
-  }
-
-  render() {
     return (
       <div id="image-footer">
         <ul id="circles">
-        {this.state.imagesArray.map((img, index) => {
+        {props.imagesArray.map((img, index) => {
           return (
             <React.Fragment key={index}>
               <li className="thumbnail-nav circle-selected" data-index={index}>
-                <img src={img.img_src} data-src={img.img_src} alt="" width="75" height="75"></img>
+                <img id={index} src={img.img_src} data-src={img.img_src} alt="" width="75" height="75" onClick={(e) => props.footerClick(e)}></img>
               </li>
             </React.Fragment>
           )
@@ -29,9 +19,8 @@ class ImageFooter extends React.Component {
         </ul>
       </div>
       /* <a zoom */
-    )
-  }
-}
+    );
+};
 
 /*
 <div id="image-footer">
