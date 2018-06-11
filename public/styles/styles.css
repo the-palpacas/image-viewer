@@ -1,4 +1,4 @@
-/*@import "../../node_modules/bootstrap/scss/bootstrap";
+/*@import "../../node_modules/bootstrap/scss/bootstrap";*/
 
 @charset "utf-8";
 @font-face {
@@ -7,7 +7,7 @@
     src: url("/assets/type/ss-standard.eot?#iefix") format('embedded-opentype'), url("/assets/type/ss-standard.woff2") format('woff2'), url("/assets/type/ss-standard.woff") format('woff'), url("/assets/type/ss-standard.ttf") format('truetype'), url("/assets/type/ss-standard.svg#SSStandard") format('svg');
     font-weight: normal;
     font-style: normal;
-}*/
+}
 
 /* main */
 .container-full {
@@ -881,23 +881,21 @@ ul {
     display: none;
 }
 
-/*
-    <div col col17 fix 570
-        image-wrapper
-            list-image
-                main-image
-                    <ul image-carousel
-                    <div left-arrow-container
-                    <div right-arrow-container
-                image-footer
-                    <ul circles
-                        <li class="thumbnail-nav circle-selected" data-index="0">
-                            <img src="https://img.etsystatic.com/il/6ffc70/1267268056/il_75x75.1267268056_dg8h.jpg?version=0" data-src="https://img.etsystatic.com/il/6ffc70/1267268056/il_75x75.1267268056_dg8h.jpg?version=0" alt="" width="75" height="75">
-                        </li>
-                <a id='zoom'
+/* page structure:
 
-
-
+<div col col17 fix 570
+    image-wrapper
+        list-image
+            main-image
+                <ul image-carousel
+                <div left-arrow-container
+                <div right-arrow-container
+            image-footer
+                <ul circles
+                    <li class="thumbnail-nav circle-selected" data-index="0">
+                        <img src="https://img.etsystatic.com/il/6ffc70/1267268056/il_75x75.1267268056_dg8h.jpg?version=0" data-src="https://img.etsystatic.com/il/6ffc70/1267268056/il_75x75.1267268056_dg8h.jpg?version=0" alt="" width="75" height="75">
+                    </li>
+            <a id='zoom'
 */
 /* ----- ImageCarousel (large images) ---- */
 #image-carousel li {
@@ -907,15 +905,12 @@ ul {
     cursor: pointer;
 }
 /* --- Arrow --- */
-/* #image-left-arrow-container
-etsy-page-file/js/main.20180525165042.en-US_LRG.js
-
-*/
 .image-arrow-box-container {
-    border: 10px solid #ececec; /* + */
-    position: absolute;
-    top: 0%;
-    height: 100%;
+  /* + */
+  /*border: 10px solid #ececec;*/
+  position: absolute;
+  top: 0%;
+  height: 100%;
 }
 .image-arrow-box-container a {
     width: 280px;
@@ -1008,30 +1003,21 @@ a.arrow-up::after {
 #image-footer {
   /**/
   position: relative;
-  border: 2px dotted #CABDBA;
+  /*border: 2px dotted #CABDBA;*/
   text-align: center;
   height: 35px;
-/*  margin: 7px 0 0;*/
-/*  min-height: 20px;*/
-
-/*    backgroundColor: purple;
-    margin: 7px 0 0;
-    min-height: 20px;*/
 }
 
 /* ul */
 #circles nav {
-  /*margin-left: 0px;*/
-  /*padding-left: 0px;*/
   list-style: none;
   border-bottom: 4px dashed #000;
+  /*margin-left: 0px;*/
+  /*padding-left: 0px;*/
   /*height: 30px;*/
-    /*list-style-type: none;*/
-
-/*    list-style: none;
-    display: inline-block;
-    height: 30px;*/
-/*    margin-left: 75px;*/
+  /* display: inline-block;
+     height: 30px;
+     margin-left: 75px;*/
 }
 
 /* .nav li */

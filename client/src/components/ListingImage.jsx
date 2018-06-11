@@ -10,15 +10,11 @@ class ListingImage extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log('ImageMain props', props);
-
     this.state = {
       imagesArray: this.props.imagesArray,
       imageArrayLength: this.props.imagesArray.length,
-
       /* Carounsel */
       currentImageIndex: 0,
-
       leftClick: this.props.leftClick,
       rightClick: this.props.rightClick,
     };
@@ -30,25 +26,14 @@ class ListingImage extends React.Component {
     this.footerClick = this.footerClick.bind(this);
   }
 
-  // shouldComponentUpdate() {
-  //   console.log('- - - - - -  shouldComponentUpdate', this.state);
-  // }
-
   /* Carousel Methods */
   carouselMoveLeft() {
-    console.log('--- carouselMoveLeft called');
-
     if (this.state.currentImageIndex < this.state.imageArrayLength - 1) {
       const newIndex = this.state.currentImageIndex + 1;
-
-      console.log('--------- newIndex', newIndex);
-
       this.setState({
         currentImageIndex: newIndex,
       });
     } else {
-      console.log('--------- newIndex', 0);
-
       this.setState({
         currentImageIndex: 0,
       });
@@ -56,18 +41,13 @@ class ListingImage extends React.Component {
   }
 
   carouselMoveRight() {
-    console.log('--- carouselMoveRight called');
     if (this.state.currentImageIndex === 0) {
       const nextIndex = this.state.imageArrayLength - 1;
-      console.log('--------- newIndex', nextIndex);
-
       this.setState({
         currentImageIndex: nextIndex,
       });
     } else {
       const newIndex = this.state.currentImageIndex - 1;
-      console.log('--------- newIndex', newIndex);
-
       this.setState({
         currentImageIndex: newIndex,
       });
@@ -77,30 +57,20 @@ class ListingImage extends React.Component {
   /* Arrow Methods */
   leftArrowClicked(event) {
     event.preventDefault();
-
-    console.log('L btn clicked');
-
     this.carouselMoveLeft();
   }
   rightArrowClicked(event) {
     event.preventDefault();
-
-    console.log('R btn clicked');
-
     this.carouselMoveRight();
   }
 
   /* Footer methods */
   footerClick(event) {
     event.preventDefault();
-
-    console.log('footer clicked, imageId', event.target.id);
-
     const displayImageIndex = Number(event.target.id);
-
     this.setState({
         currentImageIndex: displayImageIndex,
-      });
+    });
   }
 
   render() {

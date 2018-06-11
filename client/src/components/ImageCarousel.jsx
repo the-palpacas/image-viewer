@@ -2,8 +2,6 @@ import React from 'react';
 
 const ImageCarousel = (props) => {
 
-  console.log('----- ImageCarousel props', props);
-
   return (
     <ul id="image-carousel" className="p-0" style={{ width: '570px' }}>
         {props.imagesArray.map((img, index) => {
